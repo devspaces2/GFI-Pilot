@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
     private View buildView() {
         CardBuilder card = new CardBuilder(this, CardBuilder.Layout.TEXT);
 
-        card.setText(R.string.hello_world);
+        card.addImage(R.drawable.ui_item_final);
         return card.getView();
     }
 
