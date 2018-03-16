@@ -4,6 +4,7 @@ import com.google.android.glass.media.Sounds;
 import com.google.android.glass.widget.CardBuilder;
 import com.google.android.glass.widget.CardScrollAdapter;
 import com.google.android.glass.widget.CardScrollView;
+import com.oculogx.gfi_ui.cards.ItemCard;
 
 import android.app.Activity;
 import android.content.Context;
@@ -94,10 +95,8 @@ public class MainActivity extends Activity {
      * Builds a Glass styled "Hello World!" view using the {@link CardBuilder} class.
      */
     private View buildView() {
-        CardBuilder card = new CardBuilder(this, CardBuilder.Layout.TEXT);
-
-        card.addImage(R.drawable.ui_item_final);
-        return card.getView();
+        CardBuilder cardBuilder = new CardBuilder(this, CardBuilder.Layout.TEXT);
+        return new ItemCard().inflate(cardBuilder);
     }
 
 }
