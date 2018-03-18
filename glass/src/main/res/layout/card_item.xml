@@ -4,61 +4,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weight_sum="2">
+    android:background="@color/colorPrimaryDark"
+    android:weightSum="2">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
         android:orientation="vertical">
 
 
         <TextView
+            android:textColor="@color/oculogx_light_blue"
             android:id="@+id/item_card_item_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:text="ITEM:" />
 
         <TextView
+            android:textColor="@color/oculogx_blue"
             android:id="@+id/item_card_item_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
             tools:text="9793" />
 
         <TextView
+            android:textColor="@color/oculogx_light_blue"
             android:id="@+id/item_card_upc_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="UPC:" />
+            android:textSize="16sp"
+            android:text="UPC:" />
 
         <TextView
+            android:textColor="@color/oculogx_blue"
             android:id="@+id/item_card_upc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="UPC:" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="013 234 1231" />
 
         <TextView
+            android:textColor="@color/oculogx_light_blue"
             android:id="@+id/item_card_description_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="DESC:" />
+            android:textSize="16sp"
+            android:text="DESC:" />
 
         <TextView
+            android:textColor="@color/oculogx_blue"
             android:id="@+id/item_card_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
             tools:text="CUPCAKES MINI PARVE" />
 
         <TextView
+            android:textColor="@color/oculogx_light_blue"
             android:id="@+id/item_card_location_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="LOCATION:" />
+            android:textSize="16sp"
+            android:text="LOCATION:" />
 
         <TextView
+            android:textColor="@color/oculogx_blue"
             android:id="@+id/item_card_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
             tools:text="032 06 B06" />
     </LinearLayout>
 
