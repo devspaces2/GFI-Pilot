@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/black"
     android:weightSum="2">
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:id="@+id/item_card_item_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="10sp"
             android:text="ITEM:" />
 
         <TextView
@@ -29,8 +29,8 @@
             android:id="@+id/item_card_item_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:textSize="25sp"
+            android:paddingBottom="3dp"
             tools:text="9793" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:id="@+id/item_card_upc_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="10sp"
             android:text="UPC:" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:paddingBottom="3dp"
             tools:text="013 234 1231" />
 
         <TextView
@@ -55,7 +55,7 @@
             android:id="@+id/item_card_description_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="10sp"
             android:text="DESC:" />
 
         <TextView
@@ -63,8 +63,8 @@
             android:id="@+id/item_card_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:textSize="25sp"
+            android:paddingBottom="3dp"
             tools:text="CUPCAKES MINI PARVE" />
 
         <TextView
@@ -72,7 +72,7 @@
             android:id="@+id/item_card_location_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="10sp"
             android:text="LOCATION:" />
 
         <TextView
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:paddingBottom="3dp"
             tools:text="032 06 B06" />
     </LinearLayout>
 
@@ -94,7 +94,8 @@
         <ImageView
             android:id="@+id/item_card_image1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:src="@drawable/ic_glass_logo" />
 
         <ImageView
             android:id="@+id/item_card_image2"

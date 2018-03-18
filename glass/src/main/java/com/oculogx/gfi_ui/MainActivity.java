@@ -41,7 +41,8 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
         itemView = (ItemView) findViewById(R.id.item_view);
-        Item item = new Item(9793, "_________________________", "CUPCAKES MINI PARVE", "ABC 123");
+        Item item = new Item(9793, "_________________________", "CUPCAKES MINI PARVE", "032 06B06");
+        item.primaryImageURL = "https://i.pinimg.com/originals/3a/cc/57/3acc578e2f2683eb0da30f5f27163de5.jpg";
         itemView.setItem(item);
     }
 
@@ -50,7 +51,7 @@ public class MainActivity extends Activity {
      */
     private View buildView() {
         ItemCard itemCard = new ItemCard();
-        Item item = new Item(9793, "123 UPC", "CUPCAKES MINI PARVE", "ABC 123");
+        Item item = new Item(9793, "123 UPC", "CUPCAKES MINI PARVE", "032 06B06");
 
         itemCard.setData(item);
 

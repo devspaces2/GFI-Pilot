@@ -50,5 +50,7 @@ public class ItemView extends FrameLayout {
         upcView.setText(item.upc);
         descriptionView.setText(item.description);
         locationView.setText(item.location);
+//        Picasso.get()
+//        GlideApp.with(this).load("http://goo.gl/gEgYUd").into(imageView);
     }
 }
