@@ -6,33 +6,30 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/location_card_location1"
+        android:id="@+id/location_card_aisle"
+        android:textColor="@color/oculogx_light_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:textSize="25sp"
         tools:text="032" />
 
     <TextView
-        android:id="@+id/location_card_location2"
+        android:id="@+id/location_card_slot"
+        android:textColor="@color/oculogx_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@id/location_card_location1"
+        android:paddingLeft="4sp"
+        android:textSize="25sp"
+        android:layout_toEndOf="@id/location_card_aisle"
         tools:text="06" />
-
-    <TextView
-        android:id="@+id/location_card_location3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@id/location_card_location2"
-        tools:text="B06" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_below="@id/location_card_location1"
+        android:layout_below="@id/location_card_slot"
         android:orientation="vertical">
 
 

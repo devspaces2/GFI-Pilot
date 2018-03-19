@@ -6,10 +6,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.oculogx.gfi_ui.MainActivity;
 import com.oculogx.gfi_ui.R;
 import com.oculogx.gfi_ui.models.Item;
 
 /**
+ * Custom view to display an item. Used in {@link MainActivity}
+ *
  * Created by charu on 3/18/18.
  */
 
@@ -51,6 +54,7 @@ public class ItemView extends FrameLayout {
         upcView.setText(item.upc);
         descriptionView.setText(item.description);
         locationView.setText(String.valueOf(item.aisle));
+        // TODO: Figure out Picasso integration to load images from url.
 //        Picasso.get()
 //        GlideApp.with(this).load("http://goo.gl/gEgYUd").into(imageView);
     }

@@ -22,6 +22,8 @@
                 android:name="com.google.android.glass.VoiceTrigger"
                 android:resource="@xml/voice_trigger" />
         </activity>
+
+        <activity android:name=".LocationActivity" />
     </application>
 
 </manifest>
