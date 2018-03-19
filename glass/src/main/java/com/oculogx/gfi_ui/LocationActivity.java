@@ -1,7 +1,6 @@
 package com.oculogx.gfi_ui;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
@@ -12,41 +11,41 @@ import com.google.android.glass.touchpad.GestureDetector;
 import com.oculogx.gfi_ui.models.Item;
 import com.oculogx.gfi_ui.models.ItemManager;
 import com.oculogx.gfi_ui.utils.ListUtil;
-import com.oculogx.gfi_ui.views.ItemView;
+import com.oculogx.gfi_ui.views.LocationView;
 
 import java.util.List;
 
 /**
- * Custom activity to handle displaying list of items.
- *
- * TODO: Retrieve list of items from server.
+ * Custom activity to display items with Location information.
+ * <p>
+ * Created by charu on 3/18/18.
  */
-public class MainActivity extends Activity implements GestureDetector.BaseListener {
 
-    public static final String EXTRA_INDEX = "com.oculogx.gfi_ui.MainActivity.EXTRA_INDEX";
+public class LocationActivity extends Activity implements GestureDetector.BaseListener {
 
-    // TODO: Add function to solidify location
-    private ItemView itemView;
+    private LocationView locationView;
+    private GestureDetector gestureDetector;
     private List<Item> items;
     private int index;
 
-    GestureDetector gestureDetector;
-
     @Override
-    protected void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        setContentView(R.layout.activity_main);
-        itemView = (ItemView) findViewById(R.id.item_view);
+        setContentView(R.layout.activity_location);
+        locationView = (LocationView) findViewById(R.id.location_view);
+
+        index = getIntent().getIntExtra(MainActivity.EXTRA_INDEX, 0);
+
         items = ItemManager.getInstance().getItems();
-        itemView.setItem(items.get(0));
+        Item item = ListUtil.getIndex(items, index);
+        locationView.setItem(item != null ? item : items.get(0));
 
         gestureDetector = new GestureDetector(this);
         gestureDetector.setBaseListener(this);
-
     }
 
     //Send generic motion events to the gesture detector
@@ -69,12 +68,6 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
                 // Go to previous item
                 index--;
                 break;
-            case TAP:
-                // Start location activity for given item
-                Intent intent = new Intent(this, LocationActivity.class);
-                intent.putExtra(EXTRA_INDEX, index);
-                startActivity(intent);
-                return true;
             case SWIPE_DOWN:
                 // Dismiss
                 finish();
@@ -84,7 +77,7 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
         }
         Item newItem = ListUtil.getIndex(items, index);
         if (newItem != null) {
-            itemView.setItem(newItem);
+            locationView.setItem(newItem);
         }
         return true;
     }
