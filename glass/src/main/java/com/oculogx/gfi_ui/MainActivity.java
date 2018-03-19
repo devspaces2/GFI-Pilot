@@ -1,22 +1,21 @@
 package com.oculogx.gfi_ui;
 
-import com.google.android.glass.media.Sounds;
-import com.google.android.glass.widget.CardBuilder;
-import com.google.android.glass.widget.CardScrollAdapter;
-import com.google.android.glass.widget.CardScrollView;
-import com.oculogx.gfi_ui.cards.ItemCard;
-import com.oculogx.gfi_ui.models.Item;
-import com.oculogx.gfi_ui.views.ItemView;
-
 import android.app.Activity;
 import android.content.Context;
-import android.media.AudioManager;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
+
+import com.google.android.glass.touchpad.Gesture;
+import com.google.android.glass.touchpad.GestureDetector;
+import com.google.android.glass.widget.CardScrollView;
+import com.oculogx.gfi_ui.models.Item;
+import com.oculogx.gfi_ui.utils.ListUtil;
+import com.oculogx.gfi_ui.utils.MockObjectUtil;
+import com.oculogx.gfi_ui.views.ItemView;
+
+import java.util.List;
 
 /**
  * An {@link Activity} showing a tuggable "Hello World!" card.
@@ -28,9 +27,15 @@ import android.widget.AdapterView;
  *
  * @see <a href="https://developers.google.com/glass/develop/gdk/touch">GDK Developer Guide</a>
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements GestureDetector.BaseListener {
 
+    // TODO: Add function to solidify location
     private ItemView itemView;
+
+    List<Item> items;
+    private int index;
+
+    GestureDetector gestureDetector;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -41,21 +46,48 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
         itemView = (ItemView) findViewById(R.id.item_view);
-        Item item = new Item(9793, "_________________________", "CUPCAKES MINI PARVE", "032 06B06");
-        item.primaryImageURL = "https://i.pinimg.com/originals/3a/cc/57/3acc578e2f2683eb0da30f5f27163de5.jpg";
-        itemView.setItem(item);
+        items = MockObjectUtil.generateItemList();
+        itemView.setItem(items.get(0));
+
+        gestureDetector = new GestureDetector(this);
+        gestureDetector.setBaseListener(this);
+
     }
 
-    /**
-     * Builds a Glass styled "Hello World!" view using the {@link CardBuilder} class.
-     */
-    private View buildView() {
-        ItemCard itemCard = new ItemCard();
-        Item item = new Item(9793, "123 UPC", "CUPCAKES MINI PARVE", "032 06B06");
-
-        itemCard.setData(item);
-
-        return itemCard.inflate(new CardBuilder(this, CardBuilder.Layout.EMBED_INSIDE));
+    //Send generic motion events to the gesture detector
+    @Override
+    public boolean onGenericMotionEvent(MotionEvent event) {
+        if (gestureDetector != null) {
+            return gestureDetector.onMotionEvent(event);
+        }
+        return false;
     }
 
+    @Override
+    public boolean onGesture(Gesture gesture) {
+        switch (gesture) {
+            case SWIPE_RIGHT:
+                // Go to next item
+                index++;
+                break;
+            case SWIPE_LEFT:
+                // Go to previous item
+                index--;
+                break;
+            case TAP:
+                // Go to location
+                return true;
+            case SWIPE_DOWN:
+                // Dismiss
+                finish();
+                return true;
+            default:
+                return false;
+        }
+        Item newItem = ListUtil.getIndex(items, index);
+        if (newItem != null) {
+            itemView.setItem(newItem);
+        }
+        return true;
+    }
 }

@@ -15,6 +15,7 @@ import com.oculogx.gfi_ui.models.Item;
 
 public class ItemView extends FrameLayout {
 
+    // TODO: Change bindViews and setItem to match new Item model
     private TextView itemIDView;
     private TextView upcView;
     private TextView descriptionView;
@@ -46,10 +47,10 @@ public class ItemView extends FrameLayout {
 
     public void setItem(Item item) {
         // bind data here
-        itemIDView.setText(String.valueOf(item.itemID));
+        itemIDView.setText(String.valueOf(item.num));
         upcView.setText(item.upc);
         descriptionView.setText(item.description);
-        locationView.setText(item.location);
+        locationView.setText(String.valueOf(item.aisle));
 //        Picasso.get()
 //        GlideApp.with(this).load("http://goo.gl/gEgYUd").into(imageView);
     }
