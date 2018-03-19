@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".LocationActivity"
             android:icon="@drawable/ic_glass_logo"
             android:label="@string/title_activity_main">
             <intent-filter>
@@ -23,7 +23,7 @@
                 android:resource="@xml/voice_trigger" />
         </activity>
 
-        <activity android:name=".LocationActivity" />
+        <activity android:name=".ItemActivity" />
     </application>
 
 </manifest>

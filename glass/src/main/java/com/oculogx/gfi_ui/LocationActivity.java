@@ -1,6 +1,7 @@
 package com.oculogx.gfi_ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
@@ -23,6 +24,8 @@ import java.util.List;
 
 public class LocationActivity extends Activity implements GestureDetector.BaseListener {
 
+    public static final String EXTRA_INDEX = "com.oculogx.gfi_ui.LocationActivity.EXTRA_INDEX";
+
     private LocationView locationView;
     private GestureDetector gestureDetector;
     private List<Item> items;
@@ -37,8 +40,6 @@ public class LocationActivity extends Activity implements GestureDetector.BaseLi
 
         setContentView(R.layout.activity_location);
         locationView = (LocationView) findViewById(R.id.location_view);
-
-        index = getIntent().getIntExtra(MainActivity.EXTRA_INDEX, 0);
 
         items = ItemManager.getInstance().getItems();
         Item item = ListUtil.getIndex(items, index);
@@ -68,6 +69,12 @@ public class LocationActivity extends Activity implements GestureDetector.BaseLi
                 // Go to previous item
                 index--;
                 break;
+            case TAP:
+                // Start location activity for given item
+                Intent intent = new Intent(this, ItemActivity.class);
+                intent.putExtra(EXTRA_INDEX, index);
+                startActivity(intent);
+                return true;
             case SWIPE_DOWN:
                 // Dismiss
                 finish();

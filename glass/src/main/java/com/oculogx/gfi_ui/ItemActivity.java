@@ -21,9 +21,7 @@ import java.util.List;
  *
  * TODO: Retrieve list of items from server.
  */
-public class MainActivity extends Activity implements GestureDetector.BaseListener {
-
-    public static final String EXTRA_INDEX = "com.oculogx.gfi_ui.MainActivity.EXTRA_INDEX";
+public class ItemActivity extends Activity implements GestureDetector.BaseListener {
 
     // TODO: Add function to solidify location
     private ItemView itemView;
@@ -41,8 +39,12 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
 
         setContentView(R.layout.activity_main);
         itemView = (ItemView) findViewById(R.id.item_view);
+
+        index = getIntent().getIntExtra(LocationActivity.EXTRA_INDEX, 0);
+
         items = ItemManager.getInstance().getItems();
-        itemView.setItem(items.get(0));
+        Item item = ListUtil.getIndex(items, index);
+        itemView.setItem(item != null ? item : items.get(0));
 
         gestureDetector = new GestureDetector(this);
         gestureDetector.setBaseListener(this);
@@ -69,12 +71,6 @@ public class MainActivity extends Activity implements GestureDetector.BaseListen
                 // Go to previous item
                 index--;
                 break;
-            case TAP:
-                // Start location activity for given item
-                Intent intent = new Intent(this, LocationActivity.class);
-                intent.putExtra(EXTRA_INDEX, index);
-                startActivity(intent);
-                return true;
             case SWIPE_DOWN:
                 // Dismiss
                 finish();
