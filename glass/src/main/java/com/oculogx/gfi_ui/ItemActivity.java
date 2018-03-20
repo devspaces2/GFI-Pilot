@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class ItemActivity extends Activity implements GestureDetector.BaseListener {
 
-    // TODO: Add function to solidify location
+    // TODO: Add function to parse location
     private ItemView itemView;
     private List<Item> items;
     private int index;

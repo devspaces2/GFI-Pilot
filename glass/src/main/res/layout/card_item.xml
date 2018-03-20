@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_blue"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:paddingBottom="3dp"
             tools:text="9793" />
 
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_blue"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:paddingBottom="3dp"
             tools:text="CUPCAKES MINI PARVE" />
 
@@ -96,12 +96,22 @@
             android:id="@+id/item_card_image1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:adjustViewBounds= "true"
+            android:maxHeight="160dp"
+            android:maxWidth="300dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
             tools:src="@drawable/ic_glass_logo" />
 
         <ImageView
             android:id="@+id/item_card_image2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:adjustViewBounds= "true"
+            android:maxHeight="160dp"
+            android:maxWidth="300dp"
+            android:paddingRight="20dp"
+            tools:src="@drawable/ic_glass_logo"/>
 
     </LinearLayout>
 
