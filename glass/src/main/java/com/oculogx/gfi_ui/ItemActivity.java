@@ -24,6 +24,7 @@ import java.util.List;
 public class ItemActivity extends Activity implements GestureDetector.BaseListener {
 
     // TODO: Add function to parse location
+    // TODO: In xml views, add hardcoded values to @string
     private ItemView itemView;
     private List<Item> items;
     private int index;
