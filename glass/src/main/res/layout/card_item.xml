@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_light_blue"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:text="ITEM:" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_light_blue"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:text="UPC:" />
 
         <TextView
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_light_blue"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:text="DESC:" />
 
         <TextView
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_light_blue"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:text="LOCATION:" />
 
         <TextView
