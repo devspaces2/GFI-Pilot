@@ -6,12 +6,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.oculogx.gfi_ui.MainActivity;
+import com.oculogx.gfi_ui.ItemActivity;
 import com.oculogx.gfi_ui.R;
 import com.oculogx.gfi_ui.models.Item;
 
 /**
- * Custom view to display an item. Used in {@link MainActivity}
+ * Custom view to display an item. Used in {@link ItemActivity}
  *
  * Created by charu on 3/18/18.
  */
