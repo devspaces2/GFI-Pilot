@@ -48,8 +48,8 @@ public class LocationView extends FrameLayout {
 
     public void setItem(Item item) {
         // bind data here
-        aisleView.setText(String.valueOf(item.aisle));
-        slotView.setText(item.slot);
+        aisleView.setText(String.valueOf(item.aisle + " " + item.slot));
+        //slotView.setText(item.slot);
         upcView.setText(item.upc);
         descriptionView.setText(item.description);
         packSizeView.setText(item.packsize);

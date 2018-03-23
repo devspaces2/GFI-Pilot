@@ -76,13 +76,23 @@
             android:text="LOCATION:" />
 
         <TextView
-            android:id="@+id/item_card_location"
+            android:id="@+id/item_card_aisle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/oculogx_blue"
+            android:textColor="@color/blue"
             android:textSize="16sp"
             android:paddingBottom="3dp"
-            tools:text="032 06 B06" />
+            tools:text="032" />
+
+        <TextView
+            android:id="@+id/item_card_slot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:paddingBottom="3dp"
+            tools:text="06B06" />
+
     </LinearLayout>
 
     <LinearLayout

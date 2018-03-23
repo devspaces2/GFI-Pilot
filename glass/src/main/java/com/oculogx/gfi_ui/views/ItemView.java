@@ -1,6 +1,7 @@
 package com.oculogx.gfi_ui.views;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -9,6 +10,10 @@ import android.widget.TextView;
 import com.oculogx.gfi_ui.ItemActivity;
 import com.oculogx.gfi_ui.R;
 import com.oculogx.gfi_ui.models.Item;
+import com.squareup.picasso.Picasso;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Custom view to display an item. Used in {@link ItemActivity}
@@ -19,12 +24,29 @@ import com.oculogx.gfi_ui.models.Item;
 public class ItemView extends FrameLayout {
 
     // TODO: Change bindViews and setItem to match new Item model
-    private TextView itemIDView;
-    private TextView upcView;
-    private TextView descriptionView;
-    private TextView locationView;
-    private ImageView imageView1;
-    private ImageView imageView2;
+    // TODO: Change slot + aisle in locationview
+    // TODO: Change slot + aisle color
+
+    @BindView(R.id.item_card_item_id)
+    TextView itemIDView;
+
+    @BindView(R.id.item_card_upc)
+    TextView upcView;
+
+    @BindView(R.id.item_card_description)
+    TextView descriptionView;
+
+    @BindView(R.id.item_card_aisle)
+    TextView aisleView;
+
+    @BindView(R.id.item_card_slot)
+    TextView slotView;
+
+    @BindView(R.id.item_card_image1)
+    ImageView imageView1;
+
+    @BindView(R.id.item_card_image2)
+    ImageView imageView2;
 
     public ItemView(Context context) {
         super(context);
@@ -38,14 +60,7 @@ public class ItemView extends FrameLayout {
 
     private void bindViews() {
         inflate(getContext(), R.layout.card_item, this);
-
-        // bind views
-        itemIDView = (TextView) findViewById(R.id.item_card_item_id);
-        upcView = (TextView) findViewById(R.id.item_card_upc);
-        descriptionView = (TextView) findViewById(R.id.item_card_description);
-        locationView = (TextView) findViewById(R.id.item_card_location);
-        imageView1 = (ImageView) findViewById(R.id.item_card_image1);
-        imageView2 = (ImageView) findViewById(R.id.item_card_image2);
+        ButterKnife.bind(this);
     }
 
     public void setItem(Item item) {
@@ -53,11 +68,18 @@ public class ItemView extends FrameLayout {
         itemIDView.setText(String.valueOf(item.num));
         upcView.setText(item.upc);
         descriptionView.setText(item.description);
-        locationView.setText(String.valueOf(item.aisle));
-        imageView1.setImageResource(item.primaryImageURL);
-        imageView2.setImageResource(item.secondaryImageURL);
-        // TODO: Figure out Picasso integration to load images from url.
-//        Picasso.get()
-//        GlideApp.with(this).load("http://goo.gl/gEgYUd").into(imageView);
+        aisleView.setText(String.valueOf(item.aisle));
+        slotView.setText(item.slot);
+        setImage(item.primaryImageURL, imageView1);
+        setImage(item.secondaryImageURL, imageView2);
+    }
+
+    private void setImage(String url, ImageView imageView) {
+        if(url != null && !TextUtils.isEmpty(url)) {
+            Picasso.with(getContext()).load(url).into(imageView);
+        } else {
+            // Put default image res here
+            imageView.setImageResource(android.R.drawable.ic_menu_camera);
+        }
     }
 }

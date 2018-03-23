@@ -19,8 +19,8 @@ public class Item {
     public String slot;
     public int slotseq;
 
-    public int primaryImageURL;
-    public int secondaryImageURL;
+    public String primaryImageURL;
+    public String secondaryImageURL;
 
     public Item(int itemNumber, String upc, String description, String packsize, int aisle, String slot, int slotseq) {
         this.num = itemNumber;
