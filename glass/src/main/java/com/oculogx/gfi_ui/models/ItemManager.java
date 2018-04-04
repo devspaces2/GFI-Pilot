@@ -2,6 +2,7 @@ package com.oculogx.gfi_ui.models;
 
 import com.oculogx.gfi_ui.utils.MockObjectUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,13 +28,13 @@ public class ItemManager {
     }
 
     public void setItems(List<Item> items) {
-        // TODO: Use this to store items after Rest API is wired in.
         this.items = items;
     }
 
     public List<Item> getItems() {
         if (items == null) {
-            items = MockObjectUtil.generateItemList();
+            items = new ArrayList<Item>();
+//            items = MockObjectUtil.generateItemList();
         }
         return items;
     }

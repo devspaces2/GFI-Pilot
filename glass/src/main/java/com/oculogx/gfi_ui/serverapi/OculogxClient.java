@@ -11,7 +11,6 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 /**
  * Created by charu on 3/22/18.
@@ -20,35 +19,30 @@ import retrofit2.http.Query;
 public interface OculogxClient {
 
 
-
     ///////////////////// GET METHODS ////////////////////
     @GET("items")
-    Call<List<Item>> getItems(@Query("num") int num);
-//            , @Query("upc") String upc, @Query("description") String description,
-//                              @Query("packsize") String packsize, @Query("aisle") int aisle, @Query("slot") String slot,
-//                              @Query("slotseq") int slotseq);
+    Call<List<Item>> getItems();
 
     @GET("items/{id}")
-    Call<Item> getItem(@Path("id") int num);
+    Call<Item> getItem(@Path("id") int id);
 
-    @GET("users/")
-    Call<List<User>> getUsers(@Query("num") int num);
+    @GET("users")
+    Call<List<User>> getUsers();
 
     @GET("users/{id}")
     Call<User> getUser(@Path("id") int id);
 
 
-
-    // PUT METHODS
+    ///////////////////// PUT METHODS ////////////////////
     @PUT("items/{id}")
-    Call<Void> putItem(@Body Item item);
+    Call<Void> putItem(@Path("id") int id, @Body Item item);
 
     @PUT("users/{id}")
-    Call<Void> putUser(@Body User user);
+    Call<Void> putUser(@Path("id") int id, @Body User user);
 
 
 
-    // POST METHODS
+    ///////////////////// POST METHODS ////////////////////
     @POST("items/new")
     Call<Item> postItem(@Body Item item);
 

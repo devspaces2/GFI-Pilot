@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
+import com.oculogx.gfi_ui.command.GetItemsCommand;
 import com.oculogx.gfi_ui.models.Item;
 import com.oculogx.gfi_ui.models.ItemManager;
 import com.oculogx.gfi_ui.utils.ListUtil;
@@ -17,18 +18,21 @@ import com.oculogx.gfi_ui.views.ItemView;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
+
 /**
  * Custom activity to handle displaying list of items.
  *
  * TODO: Retrieve list of items from server.
  */
-public class ItemActivity extends Activity implements GestureDetector.BaseListener {
+public class ItemActivity extends Activity implements GestureDetector.BaseListener, GetItemsCommand.GetItemsCommandListener {
 
     // TODO: Add function to parse location
     // TODO: In xml views, add hardcoded values to @string
     private ItemView itemView;
     private List<Item> items;
     private int index;
+    private GetItemsCommand command;
 
     GestureDetector gestureDetector;
 
@@ -44,6 +48,9 @@ public class ItemActivity extends Activity implements GestureDetector.BaseListen
 
         index = getIntent().getIntExtra(LocationActivity.EXTRA_INDEX, 0);
 
+        command = new GetItemsCommand(this);
+        command.execute();
+
         items = ItemManager.getInstance().getItems();
         Item item = ListUtil.getIndex(items, index);
         itemView.setItem(item != null ? item : items.get(0));
@@ -51,6 +58,18 @@ public class ItemActivity extends Activity implements GestureDetector.BaseListen
         gestureDetector = new GestureDetector(this);
         gestureDetector.setBaseListener(this);
 
+    }
+
+    @Override
+    public void onGetItemsSuccess(List<Item> items) {
+        ItemManager.getInstance().setItems(items);
+    }
+
+    @Override
+    public void onGetItemsFailure(ResponseBody error) {
+        int i = 0;
+        i++;
+        i--;
     }
 
     //Send generic motion events to the gesture detector

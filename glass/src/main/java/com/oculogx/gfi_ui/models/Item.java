@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable;
 
 public class Item {
 
-    // TODO: Change Item Models to fit REST OculogxClient Item Object
     // TODO: Overload Item constructor
     // TODO: Switch primaryImageURL to String not Drawable
     public int num;
