@@ -9,9 +9,6 @@ import java.util.List;
 public class ItemsResponse {
 
     public List<Item> results;
-    
-    public ItemsResponse(List<Item> results){
-        this.results = results;
-    }
+
 
 }

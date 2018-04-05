@@ -16,6 +16,7 @@ import com.oculogx.gfi_ui.models.ItemManager;
 import com.oculogx.gfi_ui.utils.ListUtil;
 import com.oculogx.gfi_ui.views.ItemView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -25,7 +26,7 @@ import okhttp3.ResponseBody;
  *
  * TODO: Retrieve list of items from server.
  */
-public class ItemActivity extends Activity implements GestureDetector.BaseListener, GetItemsCommand.GetItemsCommandListener {
+public class ItemActivity extends Activity implements GestureDetector.BaseListener {
 
     // TODO: Add function to parse location
     // TODO: In xml views, add hardcoded values to @string
@@ -48,28 +49,20 @@ public class ItemActivity extends Activity implements GestureDetector.BaseListen
 
         index = getIntent().getIntExtra(LocationActivity.EXTRA_INDEX, 0);
 
-        command = new GetItemsCommand(this);
-        command.execute();
 
         items = ItemManager.getInstance().getItems();
         Item item = ListUtil.getIndex(items, index);
+
+        if (item == null) {
+            command = new GetItemsCommand(null);
+            command.execute();
+        }
+
         itemView.setItem(item != null ? item : items.get(0));
 
         gestureDetector = new GestureDetector(this);
         gestureDetector.setBaseListener(this);
 
-    }
-
-    @Override
-    public void onGetItemsSuccess(List<Item> items) {
-        ItemManager.getInstance().setItems(items);
-    }
-
-    @Override
-    public void onGetItemsFailure(ResponseBody error) {
-        int i = 0;
-        i++;
-        i--;
     }
 
     //Send generic motion events to the gesture detector

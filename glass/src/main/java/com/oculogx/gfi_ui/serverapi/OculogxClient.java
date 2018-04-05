@@ -1,6 +1,7 @@
 package com.oculogx.gfi_ui.serverapi;
 
 import com.oculogx.gfi_ui.models.Item;
+import com.oculogx.gfi_ui.models.ItemsResponse;
 import com.oculogx.gfi_ui.models.User;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface OculogxClient {
 
     ///////////////////// GET METHODS ////////////////////
     @GET("items")
-    Call<List<Item>> getItems();
+    Call<ItemsResponse> getItems();
 
     @GET("items/{id}")
     Call<Item> getItem(@Path("id") int id);

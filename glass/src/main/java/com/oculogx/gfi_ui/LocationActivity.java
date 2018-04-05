@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
+import com.oculogx.gfi_ui.command.GetItemsCommand;
 import com.oculogx.gfi_ui.models.Item;
 import com.oculogx.gfi_ui.models.ItemManager;
 import com.oculogx.gfi_ui.utils.ListUtil;
@@ -33,6 +34,9 @@ public class LocationActivity extends Activity implements GestureDetector.BaseLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        GetItemsCommand command;
+
         super.onCreate(savedInstanceState);
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -41,8 +45,16 @@ public class LocationActivity extends Activity implements GestureDetector.BaseLi
         setContentView(R.layout.activity_location);
         locationView = (LocationView) findViewById(R.id.location_view);
 
+        if(ItemManager.hasItems()) {
+            items = ItemManager.getInstance().getItems();
+        } else {
+            command = new GetItemsCommand(null);
+            command.execute();
+        }
+
         items = ItemManager.getInstance().getItems();
         Item item = ListUtil.getIndex(items, index);
+
         locationView.setItem(item != null ? item : items.get(0));
 
         gestureDetector = new GestureDetector(this);

@@ -17,7 +17,7 @@ public class ItemManager {
     private static ItemManager manager;
 
     private ItemManager() {
-        items = MockObjectUtil.generateItemList();
+        items = new ArrayList<Item>();
     }
 
     public static ItemManager getInstance() {
@@ -25,6 +25,10 @@ public class ItemManager {
             manager = new ItemManager();
         }
         return manager;
+    }
+
+    public static boolean hasItems() {
+        return manager != null && manager.items != null && manager.items.size() > 0;
     }
 
     public void setItems(List<Item> items) {
