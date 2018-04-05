@@ -54,6 +54,8 @@ public class ItemView extends FrameLayout {
         upcView.setText(item.upc);
         descriptionView.setText(item.description);
         locationView.setText(String.valueOf(item.aisle));
+        imageView1.setImageResource(item.primaryImageURL);
+        imageView2.setImageResource(item.secondaryImageURL);
         // TODO: Figure out Picasso integration to load images from url.
 //        Picasso.get()
 //        GlideApp.with(this).load("http://goo.gl/gEgYUd").into(imageView);

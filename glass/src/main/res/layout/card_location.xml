@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/location_card_slot"
-        android:textColor="@color/red"
+        android:textColor="@color/oculogx_light_gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -42,14 +42,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_light_blue"
-            android:textSize="10sp"
-            android:text="UPC:" />
+            android:textSize="12sp"
+            android:text="@string/location_upc_label" />
 
         <TextView
             android:id="@+id/location_card_upc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
+            android:textColor="@color/oculogx_blue"
             android:textSize="16sp"
             android:paddingBottom="3dp"
             tools:text="012912101219" />
@@ -59,14 +59,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_light_blue"
-            android:textSize="10sp"
+            android:textSize="12sp"
             tools:text="DESC:" />
 
         <TextView
             android:id="@+id/location_card_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
+            android:textColor="@color/oculogx_blue"
             android:textSize="25sp"
             android:paddingBottom="3dp"
             tools:text="" />
@@ -76,14 +76,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/oculogx_light_blue"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:text="PACK SIZE:" />
 
         <TextView
             android:id="@+id/location_card_pack_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
+            android:textColor="@color/oculogx_blue"
             android:textSize="25sp"
             android:paddingBottom="3dp"
             tools:text="" />
